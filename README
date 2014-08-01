@@ -1,0 +1,36 @@
+# ZED IMAGE BUILDER #
+# README            #
+
+# OVERVIEW #
+ZED Image Builder is a tool for packing ZED content files into one file for
+optimal access and to reduce the overall storage space occupied.  Files can
+be compressed within the image on a per file basis.  Multiple pieces of content
+referencing one file will not result in multiple copies of that referenced
+file.  The original files added to the image building process will not be
+modified.  References to other files from within content will be resolved
+inside the processed file resulting from the content hashing process.
+
+A directed acyclic graph will be used to maintain the heirarchy of files and
+allow for files which are dependencies to be hashed without the hash becoming
+useless once the tree is traversed.
+
+
+<Texture A>  <Texture B>  <Shader A>
+    |            |            |
+    ---------------------------
+                 |
+                 V
+               [Hash] <- Each file gets its own hash
+            <Material A>
+                 |
+                 V
+               [Hash] <- Material A's references to the shader and textures is
+                         resolved to their hashed equivalents
+                 |
+                 V
+              <Model A>
+                 |
+                 V
+               [Hash] <- Model A's references to the material is used, then
+                         the model file is hashed
+
