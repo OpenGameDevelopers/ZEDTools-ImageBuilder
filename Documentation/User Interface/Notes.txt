@@ -1,0 +1,9 @@
+# ZED IMAGE BUILDER     #
+# DESIGN/USER INTERFACE #
+# NOTES                 #
+
+* The content view section can be interchanged with a view of the dependency
+  graph
+* All UI elements can be detached and treated as their own separate window
+* UI elements can be merged together and split as the user sees fit
+
