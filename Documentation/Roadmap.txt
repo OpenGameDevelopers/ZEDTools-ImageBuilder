@@ -1,0 +1,13 @@
+# ZED IMAGE BUILDER #
+# ROADMAP           #
+
+# INTRODUCTION #
+There are an abundance of features to implement for the Image Builder tool,
+unfortunately it is a dependency problem with regards to rendering content for
+previewing here, as the engine is not yet finished.  As such, development for
+both the tool and engine will need to catch up to each other.
+
+For the time being, the interface will be worked on, the project file layout,
+patching the file name paths to hashed numbers, and the file browser interface.
+
+
