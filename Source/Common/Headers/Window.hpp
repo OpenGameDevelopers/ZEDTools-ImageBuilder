@@ -23,6 +23,7 @@ namespace ImageBuilder
 		// sub-windows)
 
 		WINDOW_RECT	m_WindowRect;
+		bool m_Running;
 	};
 }
 

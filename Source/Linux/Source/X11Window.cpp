@@ -93,12 +93,27 @@ namespace ImageBuilder
 		int MessageLength = strlen( MessageString );
 		XEvent Event;
 
-		while( 1 )
+		Atom DeleteMessage = XInternAtom( m_pDisplay, "WM_DELETE_WINDOW",
+			False );
+		XSetWMProtocols( m_pDisplay, m_Window, &DeleteMessage, 1 );
+
+		m_Running = true;
+		
+		while( m_Running )
 		{
 			XNextEvent( m_pDisplay, ( XEvent * )&Event );
 
 			switch( Event.type )
 			{
+				case ClientMessage:
+				{
+					if( *XGetAtomName( m_pDisplay,
+						Event.xclient.message_type ) == *"WM_PROTOCOLS" )
+					{
+						m_Running = false;
+					}
+					break;
+				}
 				case Expose:
 				{
 					XWindowAttributes WindowAttributes;
